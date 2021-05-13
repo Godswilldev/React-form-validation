@@ -71,7 +71,36 @@ You will also see any lint errors in the console.
 I learnt how to validate a form with the onChange handler even before submitting the form.
 ```js
 const proudOfThisFunc = () => {
-  console.log("🎉");
+  handleChange = (evt) => {
+    let { name, value } = evt.target;
+    let errors = this.state.errors;
+    switch (name) {
+      case "firstname":
+        errors.firstname =
+          value.trim() === "" ? "First Name cannot be empty" : "";
+        break;
+      case "lastname":
+        errors.lastname =
+          value.trim() === "" ? "Last Name cannot be empty" : "";
+        break;
+      case "email":
+        errors.email = validEmailRegex.test(value)
+          ? ""
+          : "Looks like this is not an Email";
+        break;
+      case "password":
+        errors.password =
+          value.length < 6 ? "Password must be 6 characters long!" : "";
+        break;
+
+      default:
+        break;
+    }
+    this.setState({
+      errors,
+      [name]: value,
+    });
+  };
 };
 ```
 
