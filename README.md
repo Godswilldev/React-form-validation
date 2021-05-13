@@ -68,28 +68,42 @@ You will also see any lint errors in the console.
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-
+I learnt how to validate a form with the onChange handler even before submitting the form.
 ```js
 const proudOfThisFunc = () => {
-  console.log("🎉");
+  handleChange = (evt) => {
+    let { name, value } = evt.target;
+    let errors = this.state.errors;
+    switch (name) {
+      case "firstname":
+        errors.firstname =
+          value.trim() === "" ? "First Name cannot be empty" : "";
+        break;
+      case "lastname":
+        errors.lastname =
+          value.trim() === "" ? "Last Name cannot be empty" : "";
+        break;
+      case "email":
+        errors.email = validEmailRegex.test(value)
+          ? ""
+          : "Looks like this is not an Email";
+        break;
+      case "password":
+        errors.password =
+          value.length < 6 ? "Password must be 6 characters long!" : "";
+        break;
+
+      default:
+        break;
+    }
+    this.setState({
+      errors,
+      [name]: value,
+    });
+  };
 };
 ```
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Twitter - [@yourusername](https://www.twitter.com/PackageDotJson)
