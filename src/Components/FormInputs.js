@@ -53,29 +53,24 @@ class FormInputs extends Component {
       default:
         break;
     }
-    this.setState(
-      {
-        errors,
-        [name]: value,
-      },
-      () => {
-        console.log(errors);
-      }
-    );
+    this.setState({
+      errors,
+      [name]: value,
+    });
   };
 
   handleSubmit = (evt) => {
-    evt.preventDefault();
+    // evt.preventDefault();
     if (validateForm(this.state.errors)) {
-      alert("Valid Form");
+      alert("Thanks for your submission");
     } else {
-      alert("Invalid Form");
+      alert("Please fill all details correctly");
     }
   };
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} action="/" method="get">
           <input
             type="text"
             name="firstname"
