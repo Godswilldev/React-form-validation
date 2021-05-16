@@ -1,9 +1,21 @@
 .HeaderText {
     color: #fff;
     font-size: 3rem;
+    @include respond(tab-port) {
+        text-align: center;
+    }
+
+    @include respond(phone) {
+        br {
+            display: none;
+        }
+    }
+
     &__heading {
         margin-bottom: 3rem;
         line-height: 1.3;
+        @include respond(tab-port) {
+        }
     }
     &__paragraph {
         font-weight: 600;
