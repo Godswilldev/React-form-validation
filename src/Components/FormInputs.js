@@ -48,9 +48,6 @@ class FormInputs extends Component {
         errors.password =
           value.length < 6 ? "Password must be 6 characters long!" : "";
         break;
-      //   case "password":
-      //     errors.password = value.trim() === "" ? "Password cannot be Empty" : "";
-      //     break;
 
       default:
         break;
@@ -62,8 +59,16 @@ class FormInputs extends Component {
   };
 
   handleSubmit = (evt) => {
-    // evt.preventDefault();
-    if (validateForm(this.state.errors)) {
+    evt.preventDefault();
+    let errors = this.state.errors;
+
+    if (
+      validateForm(this.state.errors) &&
+      errors.firstname !== "" &&
+      errors.lastname !== "" &&
+      errors.email !== "" &&
+      errors.password !== ""
+    ) {
       alert("Thanks for your submission");
     } else {
       alert("Please fill all details correctly");
