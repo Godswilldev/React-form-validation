@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { Component } from "react";
+import errorIcon from "../images/icon-error.svg";
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 );
@@ -70,48 +71,117 @@ class FormInputs extends Component {
   };
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit} action="/" method="get">
-          <input
-            type="text"
-            name="firstname"
-            id="firstname"
-            placeholder="Firstname"
-            onChange={this.handleChange}
-            value={this.state.firstname}
-          />
-          <p>{this.state.errors.firstname}</p>
-          <input
-            type="text"
-            name="lastname"
-            id="lastname"
-            placeholder="Lastname"
-            onChange={this.handleChange}
-            value={this.state.lastname}
-          />
-          <p>{this.state.errors.lastname}</p>
+      <div className="form">
+        <button className="form__headerBtn btn">
+          <strong>Try it free 7 days</strong> then $20/mo. thereafter
+        </button>
 
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email"
-            onChange={this.handleChange}
-            value={this.state.email}
-          />
-          <p>{this.state.errors.email}</p>
+        <form
+          onSubmit={this.handleSubmit}
+          action="/"
+          method="get"
+          className="form__form"
+        >
+          <div className="form__input">
+            <input
+              type="text"
+              name="firstname"
+              id="firstname"
+              placeholder={this.state.errors.firstname ? "" : "Firstname"}
+              onChange={this.handleChange}
+              value={this.state.firstname}
+              style={
+                this.state.errors.firstname
+                  ? { borderColor: "#ff7a7a" }
+                  : { borderColor: "#b9b6d3" }
+              }
+            />
 
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Password"
-            onChange={this.handleChange}
-            value={this.state.password}
-          />
-          <p>{this.state.errors.password}</p>
+            <em className="form__input--error">
+              {this.state.errors.firstname}
+            </em>
 
-          <button type="submit">Claim your free trial</button>
+            {this.state.errors.firstname && (
+              <img
+                className="form__input--errorIcon"
+                src={errorIcon}
+                alt="icon error"
+              />
+            )}
+          </div>
+
+          <div className="form__input">
+            <input
+              type="text"
+              name="lastname"
+              id="lastname"
+              placeholder={this.state.errors.lastname ? "" : "Lastname"}
+              onChange={this.handleChange}
+              value={this.state.lastname}
+            />
+
+            <em className="form__input--error">{this.state.errors.lastname}</em>
+
+            {this.state.errors.lastname && (
+              <img
+                className="form__input--errorIcon"
+                src={errorIcon}
+                alt="icon error"
+              />
+            )}
+          </div>
+
+          <div className="form__input">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder={
+                this.state.errors.email ? "email@example.com" : "Email"
+              }
+              onChange={this.handleChange}
+              value={this.state.email}
+            />
+
+            <em className="form__input--error">{this.state.errors.email}</em>
+
+            {this.state.errors.email && (
+              <img
+                className="form__input--errorIcon"
+                src={errorIcon}
+                alt="icon error"
+              />
+            )}
+          </div>
+
+          <div className="form__input">
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder={this.state.errors.password ? "" : "Password"}
+              onChange={this.handleChange}
+              value={this.state.password}
+            />
+            <em className="form__input--error">{this.state.errors.password}</em>
+
+            {this.state.errors.password && (
+              <img
+                className="form__input--errorIcon"
+                src={errorIcon}
+                alt="icon error"
+              />
+            )}
+          </div>
+
+          <button type="submit" className="form__btn btn">
+            Claim your free trial
+          </button>
+
+          <p className="form__footer">
+            By clicking the button you agree to our
+            <strong> Terms and Services </strong>
+          </p>
         </form>
       </div>
     );

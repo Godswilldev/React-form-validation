@@ -1,0 +1,13 @@
+.HeaderText {
+    color: #fff;
+    font-size: 3rem;
+    &__heading {
+        margin-bottom: 3rem;
+        line-height: 1.3;
+    }
+    &__paragraph {
+        font-weight: 600;
+        line-height: 1.5;
+        font-size: 2.5rem;
+    }
+}
