@@ -123,6 +123,12 @@ class FormInputs extends Component {
               placeholder={this.state.errors.lastname ? "" : "Lastname"}
               onChange={this.handleChange}
               value={this.state.lastname}
+style={
+                this.state.errors.lastname
+                  ? { borderColor: "#ff7a7a" }
+                  : { borderColor: "#b9b6d3" }
+              }
+
             />
 
             <em className="form__input--error">{this.state.errors.lastname}</em>
@@ -146,6 +152,12 @@ class FormInputs extends Component {
               }
               onChange={this.handleChange}
               value={this.state.email}
+
+style={
+                this.state.errors.email
+                  ? { borderColor: "#ff7a7a" }
+                  : { borderColor: "#b9b6d3" }
+              }
             />
 
             <em className="form__input--error">{this.state.errors.email}</em>
@@ -167,6 +179,12 @@ class FormInputs extends Component {
               placeholder={this.state.errors.password ? "" : "Password"}
               onChange={this.handleChange}
               value={this.state.password}
+style={
+                this.state.errors.password
+                  ? { borderColor: "#ff7a7a" }
+                  : { borderColor: "#b9b6d3" }
+              }
+
             />
             <em className="form__input--error">{this.state.errors.password}</em>
 
